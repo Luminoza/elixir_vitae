@@ -1,0 +1,392 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+
+/* ##------------- Page --------------## */
+
+html {
+  height: 100%;
+}
+  
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.moitie-ecran {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+
+/* ##------------- Title --------------## */
+
+.title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+
+/* ##------------- Button --------------## */
+
+.action-button {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+}
+.action-button:hover {
+  background-color: gray;
+}
+
+/* Home sweet home */
+
+.home {
+  font-size: 16px;
+  color: #fff;
+  background-color: #333333b7;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  bottom: 8px;
+  right: 20px;
+}
+
+
+/* ##------------- The LED Website® --------------## */
+
+.meter {
+  display: flex;
+  overflow: hidden;
+  background-color: #e2e8f0;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  height: 4rem;
+}
+.meter span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #faf089;
+  text-align: center;
+  white-space: pre;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: width 2s ease;
+}
+
+/* button */
+
+.on {
+  background-color: #faf089;
+}
+.off {
+  background-color: #333333b7;
+}
+.up {
+  background-color: #a2d6ab;
+  margin-left: 50px;
+}
+.down {
+  background-color: #e57373;
+}
+
+.reverse {
+  background-color: #333333b7;
+  margin-left: 698px;
+}
+
+/* ##------------- The (Reverse) LED Website® --------------## */
+
+.led-container {
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border: 5px solid #999;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.led-on {
+  background-color: #faf089;
+  box-shadow: 0 0 50px #fff155;
+}
+
+/* button */
+
+.onoff {
+  background-color: #faf089;
+  margin-top: 2%;
+  margin-left: 46%;
+}
+
+.back {
+  background-color: #333333b7;
+  margin-left: 46.2%;
+}
+
+/* ##------------- The Tetris Website® --------------## */
+
+.moitie-ecran-tetris {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 3%;
+}
+
+.tetris {
+  margin-top: 1%;
+  margin-left: 41%;
+}
+
+.score {
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 8px;
+  position: fixed;
+  top: 75.5%;
+  left: 60%;
+}
+
+/* button */
+
+.play {
+  font-size: 100px;
+  color: #fff;
+  background-color: #e57373;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 40%;
+  left: 43.3%;
+}
+
+.game_over {
+  font-size: 50px;
+  color: #fff;
+  background-color: #333333b7;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 36%;
+  left: 41%;
+}
+
+.play_again {
+  font-size: 50px;
+  color: #fff;
+  background-color: #e57373;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 53%;
+  left: 40.5%;
+}
+
+.right {
+  font-size: 20px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+}
+
+.left {
+  font-size: 20px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 40%;
+  left: 30%;
+}
+
+.turn {
+  font-size: 20px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 30%;
+}
+
+.gravity {
+  font-size: 20px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 60%;
+  left: 30%;
+}
+
+
+.give_up {
+  color: #fff;
+  background-color: #d2b48c00;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 85%;
+  left: 42.5%;
+}
+
+.giant {
+  background-color: #333333b7;
+  text-align: center;
+  margin-inline: 515px;
+}
+
+/* ##------------- The (Giant) Tetris Website® --------------## */
+
+.moitie-ecran-tetris-giant {
+  max-width: 80%;
+  margin: 2%;
+  margin-top: 3%;
+}
+
+.tetris-giant {
+  margin-top: 1%;
+}
+
+.score-giant {
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 8px;
+  position: fixed;
+  top: 84%;
+  left: 5%;
+}
+
+/* button */
+
+.play-giant {
+  font-size: 100px;
+  color: #fff;
+  background-color: #e57373;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 40%;
+  left: 43.3%;
+}
+
+.right-giant {
+  font-size: 30px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 11%;
+  left: 90%;
+}
+
+.left-giant {
+  font-size: 30px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 82%;
+  left: 90%;
+}
+
+.down-giant {
+  font-size: 30px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 11%;
+  left: 80%;
+}
+
+.turn-giant {
+  font-size: 30px;
+  background-color: #333333b7;
+  text-align: center;
+  position: fixed;
+  top: 82%;
+  left: 82.6%;
+}
+
+.game_over-giant {
+  font-size: 50px;
+  color: #fff;
+  background-color: #333333b7;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 36%;
+  left: 41%;
+}
+
+.play_again-giant {
+  font-size: 50px;
+  color: #fff;
+  background-color: #e57373;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 53%;
+  left: 40.5%;
+}
+
+.give_up-giant {
+  color: #fff;
+  background-color: #d2b48c00;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+}
+
+.mini-giant {
+  background-color: #333333b7;
+  text-align: center;
+  margin-inline: 515px;
+}
+
+/* ##------------- TThe Mystery Website® --------------## */
+
+.mystery-button {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  width: 350px; /* Largeur du bouton rond */
+  height: 350px; /* Hauteur du bouton rond */
+  background-color: red;
+  color: white;
+  font-size: 62px; /* Taille de la police augmentée */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 50%; /* Transforme le bouton en cercle */
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  margin-left: 370px;
+}
+.mystery-button:hover {
+  background-color: darkred;
+}
+
+
+
