@@ -15,25 +15,21 @@ defmodule Firmware.Application do
       [
         # Children for all targets
         # Starts a worker by calling: Firmware.Worker.start_link(arg)
-        # {Firmware.Worker, arg},
-        # Framwe.Manager,
 
-        # Start the Phoenix application
         # Ui.Manager,
         Ui.Manager.start_link(0),
-        # {Ui.Worker, 0},
 
         # Start Led
         Firmware.Led.start(:normal, []),
 
-        # Start reverse Led
+        # Start Reverse Led
         Firmware.ReverseLed.start(:normal, []),
 
-        # Start Led
-        Firmware.RainbowLED.start(:normal, []),
+        # Start Tetris
+        Firmware.Tetris.start(:normal, []),
 
-        # Start Joystick
-        # Firmware.Joystick.start(:normal, [])
+        # Start Rainbow LED
+        Firmware.RainbowLED.start(:normal, [])
 
       ] ++ children(target())
 

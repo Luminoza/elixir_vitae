@@ -66,12 +66,7 @@ defmodule Ui.TetrisGiant.TetrisGiant do
     }
   end
 
-  ##------------- Calcul du score --------------##
-
-  def score(0), do: 0
-  def score(count) do
-    100 * round(:math.pow(2, count))
-  end
+  ##------------- Try to move --------------##
 
   def try_left(block, bottom), do: try_move(block, bottom, &BlockGiant.left/1)
   def try_right(block, bottom), do: try_move(block, bottom, &BlockGiant.right/1)
@@ -85,6 +80,13 @@ defmodule Ui.TetrisGiant.TetrisGiant do
     else
       new_block
     end
+  end
+
+  ##------------- Calcul du score --------------##
+
+  def score(0), do: 0
+  def score(count) do
+    100 * round(:math.pow(2, count))
   end
 
 end

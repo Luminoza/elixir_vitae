@@ -42,7 +42,7 @@ defmodule Ui.Tetris.Bottom do
     count == 10 # En fonction de la taille du plateau
   end
 
-    ##------------- Collapse A Complete Row --------------##
+  ##------------- Collapse A Complete Row --------------##
 
   def collapse_row(bottom, row) do
     bad_keys =

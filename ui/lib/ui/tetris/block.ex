@@ -17,7 +17,6 @@ defmodule Ui.Tetris.Block do
     __struct__(attributes)
   end
 
-
   def new_random() do
     %__MODULE__{
       name: random_name(),

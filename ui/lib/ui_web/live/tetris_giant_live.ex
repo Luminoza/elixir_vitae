@@ -9,7 +9,13 @@ defmodule UiWeb.TetrisGiantLive do
   @box_height 20
 
   def mount(_params, _session, socket) do
-    :timer.send_interval 70, self(), :tick # la vitesse de jeux
+    :timer.send_interval 70, self(), :tick # La vitesse de jeux
+
+    Phoenix.PubSub.subscribe(Ui.PubSub, "update_right_state")
+    Phoenix.PubSub.subscribe(Ui.PubSub, "update_left_state")
+    Phoenix.PubSub.subscribe(Ui.PubSub, "update_gravity_state")
+    Phoenix.PubSub.subscribe(Ui.PubSub, "update_turn_state")
+
     {:ok, start_game(socket)}
   end
 
@@ -158,7 +164,6 @@ defmodule UiWeb.TetrisGiantLive do
     <svg
       style="background-color: #F8F8F8"
       width="1300" height="400"
-      viewBox="0 0 1300 400
       xml:space="preserve">
     """
   end
@@ -288,12 +293,18 @@ defmodule UiWeb.TetrisGiantLive do
 
   ##------------- Handle --------------##
 
+  #-- Move --#
+
+  #- right -#
+
   def handle_event("keydown", %{"key" => "ArrowDown"}, socket) do
     {:noreply, move(:left, socket)}
   end
   def handle_event("left-clic", _, socket) do
     {:noreply, move(:left, socket)}
   end
+
+  #- left -#
 
   def handle_event("keydown", %{"key" => "ArrowUp"}, socket) do
     {:noreply, move(:right, socket)}
@@ -302,12 +313,16 @@ defmodule UiWeb.TetrisGiantLive do
     {:noreply, move(:right, socket)}
   end
 
+  #- down -#
+
   def handle_event("keydown", %{"key" => "ArrowRight"}, socket) do
     {:noreply, drop(socket.assigns.state, socket, :true)}
   end
   def handle_event("down-clic", _, socket) do
     {:noreply, drop(socket.assigns.state, socket, :true)}
   end
+
+  #- turn -#
 
   def handle_event("keydown", %{"key" => "ArrowLeft"}, socket) do
     {:noreply, rotate(:rotate, socket)}
@@ -316,6 +331,7 @@ defmodule UiWeb.TetrisGiantLive do
     {:noreply, rotate(:rotate, socket)}
   end
 
+  #-- Others --#
 
   def handle_event("keydown", _, socket), do: {:noreply, socket}
   def handle_event("start", _, socket) do
@@ -326,8 +342,25 @@ defmodule UiWeb.TetrisGiantLive do
     {:noreply, assign(socket, state: :game_over)}
   end
 
+  #-- Gravity --#
+
   def handle_info(:tick, socket) do
     {:noreply, drop(socket.assigns.state, socket, false)}
+  end
+
+  #-- Move Button physiques --#
+
+  def handle_info(:update_right_state, socket) do
+    {:noreply, move(:right, socket)}
+  end
+  def handle_info(:update_left_state, socket) do
+    {:noreply, move(:left, socket)}
+  end
+  def handle_info(:update_gravity_state, socket) do
+    {:noreply, drop(socket.assigns.state, socket, :true)}
+  end
+  def handle_info(:update_turn_state, socket) do
+    {:noreply, rotate(:rotate, socket)}
   end
 
 end

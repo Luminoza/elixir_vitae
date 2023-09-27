@@ -2,12 +2,13 @@ defmodule UiWeb.MysteryLive do
   use UiWeb, :live_view
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, mystery: False)}
+    {:ok, assign(socket, mystery: false)}
   end
 
   def handle_event("mystery", _, socket) do
-    Ui.Manager.set_mystery(True)
-    {:noreply, assign(socket, mystery: True)}
+    new_mystery = not socket.assigns.mystery
+    Ui.Manager.set_mystery(new_mystery)
+    {:noreply, assign(socket, mystery: new_mystery)}
   end
 
   def render(assigns) do

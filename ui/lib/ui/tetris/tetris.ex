@@ -82,11 +82,11 @@ defmodule Ui.Tetris do
     end
   end
 
-    ##------------- Calcul du score --------------##
+  ##------------- Calcul du score --------------##
 
-    def score(0), do: 0
-    def score(count) do
-      100 * round(:math.pow(2, count))
-    end
+  def score(0), do: 0
+  def score(count) do
+    100 * round(:math.pow(2, count))
+  end
 
 end

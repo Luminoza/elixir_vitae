@@ -11,38 +11,31 @@ defmodule Firmware.ReverseLed do
     {:ok, sw_gpio} = GPIO.open(@sw_pin, :input)
     {:ok, led_sw_gpio} = GPIO.open(@led_sw_pin, :output)
 
-    last_button_state = :error
-
-    spawn(fn -> loop(sw_gpio, led_sw_gpio , last_button_state) end)
+    spawn(fn -> loop(sw_gpio, led_sw_gpio) end)
     {:ok, self()}
   end
 
-  defp change_led_state do
-    # send(UiWeb.ReverseLedLive, "sw_change")
-    # send(UiWeb.ReverseLedLive, :sw_change)
-    # UiWeb.Endpoint.broadcast("led:lobby", "sw_change", %{})
+  defp broadcast_led_state(led_state) do
+    Phoenix.PubSub.broadcast(Ui.PubSub, "update_led_state", {:update_led_state, led_state})
   end
 
-  defp loop(sw_gpio, led_sw_gpio, last_button_state) do
+  defp loop(sw_gpio, led_sw_gpio) do
 
     button_state = GPIO.read(sw_gpio)
 
-    if button_state != last_button_state do
       if button_state == 1 do
         GPIO.write(led_sw_gpio, 1)
 
         Ui.Manager.set_button_pressed(true)
-        change_led_state()
+        broadcast_led_state("led-on")
       else
         GPIO.write(led_sw_gpio, 0)
 
         Ui.Manager.set_button_pressed(false)
-        change_led_state()
-      end
-      last_button_state = button_state
+        broadcast_led_state("led-off")
     end
 
     :timer.sleep(100)
-    loop(sw_gpio, led_sw_gpio, last_button_state)
+    loop(sw_gpio, led_sw_gpio)
   end
 end

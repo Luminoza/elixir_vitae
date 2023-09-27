@@ -1,6 +1,6 @@
 defmodule Ui.TetrisGiant.PointsGiant do
 
-  #-- Move --#
+  #-- Move to an other location --#
 
   def move_to_location(points, {x, y} = _location) do
     Enum.map(points, fn {dx, dy} -> {dx + x, dy + y} end)
@@ -77,7 +77,7 @@ defmodule Ui.TetrisGiant.PointsGiant do
   defp add_color({_x, _y, _c} = point, _color), do: point
   defp add_color({x, y}, color), do: {x, y, color}
 
-  #-- Show consol --#
+  #-- Show Terminal --#
 
   def to_string(points) do
     map =

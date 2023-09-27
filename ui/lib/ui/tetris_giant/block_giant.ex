@@ -2,7 +2,7 @@ defmodule Ui.TetrisGiant.BlockGiant do
 
   alias Ui.TetrisGiant.PointsGiant
 
-  @x_center 800
+  ##------------- Default --------------##
 
   defstruct [
     name: :i,
@@ -10,6 +10,8 @@ defmodule Ui.TetrisGiant.BlockGiant do
     rotation: 0,
     reflection: false
   ]
+
+  ##------------- Create New --------------##
 
   def new(attributes \\ []) do
     __struct__(attributes)
@@ -24,11 +26,14 @@ defmodule Ui.TetrisGiant.BlockGiant do
     }
   end
 
+  #-- Name --#
+
   def random_name() do
     ~w(o i s z l j t)a
     |> Enum.random
-
   end
+
+  #-- Rotation --#
 
   def random_rotation() do
     [0, 90, 180, 270]
@@ -140,6 +145,16 @@ defmodule Ui.TetrisGiant.BlockGiant do
     ]
   end
 
+  #-- Color --#
+
+  defp color(%{name: :o}), do: :yellow
+  defp color(%{name: :i}), do: :blue
+  defp color(%{name: :s}), do: :red
+  defp color(%{name: :z}), do: :green
+  defp color(%{name: :l}), do: :orange
+  defp color(%{name: :j}), do: :pink
+  defp color(%{name: :t}), do: :purple
+
   #-- String & Print --#
 
   def prepare(block) do
@@ -148,6 +163,8 @@ defmodule Ui.TetrisGiant.BlockGiant do
     |> PointsGiant.rotate(block.rotation)
     |> PointsGiant.mirror(block.reflection)
   end
+
+  ##------------- To show in console --------------##
 
   def to_string(block) do
     block
@@ -161,18 +178,6 @@ defmodule Ui.TetrisGiant.BlockGiant do
     |> PointsGiant.print()
     block
   end
-
-  #-- Color --#
-
-  defp color(%{name: :o}), do: :yellow
-  defp color(%{name: :i}), do: :blue
-  defp color(%{name: :s}), do: :red
-  defp color(%{name: :z}), do: :green
-  defp color(%{name: :l}), do: :orange
-  defp color(%{name: :j}), do: :pink
-  defp color(%{name: :t}), do: :purple
-
-  def x_center(), do: @x_center
 
   def render(block) do
     block

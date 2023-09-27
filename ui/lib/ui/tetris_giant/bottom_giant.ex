@@ -1,5 +1,7 @@
 defmodule Ui.TetrisGiant.BottomGiant do
 
+  ##------------- Add to bottom --------------##
+
   def merge(bottom, points) do
     points
     |> Enum.map(fn {x, y, color} -> {{x, y}, {x, y, color}} end)
@@ -20,6 +22,8 @@ defmodule Ui.TetrisGiant.BottomGiant do
 
   ##------------- Ligne complette --------------##
 
+  #-- What is a row ? --#
+
   def complete_row(bottom) do
     bottom
     |> Map.keys
@@ -35,8 +39,10 @@ defmodule Ui.TetrisGiant.BottomGiant do
       |> Enum.filter(fn {x, _y} -> x == row end)
       |> Enum.count
 
-    count == 20
+    count == 20 # En fonction de la taille du plateau
   end
+
+  ##------------- Collapse A Complete Row --------------##
 
   def collapse_row(bottom, row) do
     bad_keys =
@@ -50,12 +56,16 @@ defmodule Ui.TetrisGiant.BottomGiant do
     |> Map.new
   end
 
+  #--  --#
+
   def move_bad_point_up({{x, y}, {x, y, color}}, row) when x < row do
     {{x + 1, y}, {x + 1, y, color}}
   end
   def move_bad_point_up(key_value, _row) do
     key_value
   end
+
+  #-- Faire tomber toutes les lignes au dessus --#
 
   def full_collapse(bottom) do
     rows =

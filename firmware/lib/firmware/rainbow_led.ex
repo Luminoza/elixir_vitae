@@ -27,14 +27,17 @@ defmodule Firmware.RainbowLED do
 
   defp loop(red_gpio, green_gpio, blue_gpio) do
 
-    if Ui.Manager.get_mystery == True do
+    if Ui.Manager.get_mystery == true do
 
       {r, g, b} = rainbow_color()
 
       Pwm.gpio_pwm(red_gpio, r)
       Pwm.gpio_pwm(green_gpio, g)
       Pwm.gpio_pwm(blue_gpio, b)
-
+    else
+      Pwm.gpio_pwm(red_gpio, 0)
+      Pwm.gpio_pwm(green_gpio, 0)
+      Pwm.gpio_pwm(blue_gpio, 0)
     end
 
     Process.sleep(100)  # Ajuste la durée en fonction de la luminosité
