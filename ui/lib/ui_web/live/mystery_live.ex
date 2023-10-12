@@ -17,12 +17,14 @@ defmodule UiWeb.MysteryLive do
       <title>The Mystery Website · Antonin TERRASSON</title>
     </head>
 
-    <main class="moitie-ecran">
-      <h1 class="title">The Mystery Website<a href="https://www.youtube.com/watch?v=ILtz5nX3_fc&t=1m01s">®</a></h1>
+    <main style="margin-top: 5%;">
+      <h1 class="title moitie-ecran">The Mystery Website<a href="https://www.youtube.com/watch?v=ILtz5nX3_fc&t=1m01s">®</a></h1>
 
-      <button class="mystery-button mt-10" phx-click="mystery">
-        <span>Mystery</span>
-      </button>
+      <div style="text-align: center; margin-top: 3%;">
+        <button class="mystery-button" phx-click="mystery">
+          <span>Mystery</span>
+        </button>
+      </div>
 
     </main>
     """

@@ -24,6 +24,7 @@ defmodule UiWeb.Router do
     live "/joystick", JoystickLive
     live "/tetris", TetrisLive
     live "/tetris/giant", TetrisGiantLive
+    live "/finiteautomata",  FiniteAutomataLive
 
     live "/mystery", MysteryLive
   end

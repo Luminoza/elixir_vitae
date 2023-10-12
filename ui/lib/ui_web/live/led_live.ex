@@ -33,7 +33,7 @@ defmodule UiWeb.LedLive do
       <title>The LED Website · Antonin TERRASSON</title>
     </head>
 
-    <main class="moitie-ecran">
+    <main style="margin-top: 6%;" class="moitie-ecran">
       <h1 class="title">The LED Website<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">®</a></h1>
 
       <div id="light" class="mt-20">

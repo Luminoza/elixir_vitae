@@ -22,12 +22,14 @@ defmodule UiWeb.ReverseLedLive do
       <title>The (Reverse) LED Website · Antonin TERRASSON</title>
     </head>
 
-    <main class="moitie-ecran">
-      <h1 class="title">The (Reverse) LED Website<a href="https://www.youtube.com/watch?v=0U7SBGBCoGs&t=2m52s">®</a></h1>
+    <main>
+      <div class="moitie-ecran" style="margin-top: 10%;">
+        <h1 class="title">The (Reverse) LED Website<a href="https://www.youtube.com/watch?v=0U7SBGBCoGs&t=2m52s">®</a></h1>
 
-      <div class="led-container <%= @led_state %>"></div>
+        <div class="led-container <%= @led_state %>"></div>
+      </div>
 
-      <div class="mt-10">
+      <div style="text-align: center; margin-top: 3%;">
         <a href="/led" class="action-button back">Reverse</a>
       </div>
     </main>

@@ -28,6 +28,9 @@ defmodule Firmware.Application do
         # Start Tetris
         Firmware.Tetris.start(:normal, []),
 
+        # Start FiniteAutomata
+        Firmware.FiniteAutomata.start(:normal, []),
+
         # Start Rainbow LED
         Firmware.RainbowLED.start(:normal, [])
 

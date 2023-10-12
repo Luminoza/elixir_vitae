@@ -25,14 +25,14 @@ defmodule UiWeb.TetrisLive do
 
   def render(%{state: :starting} = assigns) do
     ~L"""
-    <head>
-        <title>The Tetris Website · Antonin TERRASSON</title>
+      <head>
+          <title>The Tetris Website · Antonin TERRASSON</title>
       </head>
 
       <main class="moitie-ecran-tetris">
         <h1 class="title">The Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
 
-        <div class="tetris" phx-window-keydown="keydown">
+        <div class="p-2 bg-gradient-to-b from-red-300 to-yellow-200 rounded-lg" phx-window-keydown="keydown">
           <%= raw svg_head()%>
           <%= raw svg_foot()%>
         </div>
@@ -42,6 +42,7 @@ defmodule UiWeb.TetrisLive do
         <div class="mt-7">
           <a href="/tetris/giant" class="action-button giant">Giant</a>
         </div>
+      </main>
     """
   end
 
@@ -54,29 +55,29 @@ defmodule UiWeb.TetrisLive do
       </head>
 
       <main class="moitie-ecran-tetris">
-        <h1 class="title">The Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
+      <h1 class="title">The Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
 
-        <div class="tetris" phx-window-keydown="keydown">
-          <%= raw svg_head()%>
+      <button class="action-button right" phx-click="right-clic">Right</button>
+      <button class="action-button left" phx-click="left-clic">Left</button>
+      <button class="action-button turn" phx-click="turn-clic">Turn</button>
+      <button class="action-button gravity" phx-click="down-clic">Gravity</button>
 
-          <%= raw boxes(@piece) %>
-          <%= raw boxes(Map.values(@bottom)) %>
 
-          <%= raw svg_foot()%>
-        </div>
+      <div class="p-2 bg-gradient-to-b from-red-300 to-yellow-200 rounded-lg" phx-window-keydown="keydown">
+        <%= raw svg_head()%>
 
-        <button class="action-button right" phx-click="right-clic">Right</button>
-        <button class="action-button left" phx-click="left-clic">Left</button>
-        <button class="action-button turn" phx-click="turn-clic">Turn</button>
-        <button class="action-button gravity" phx-click="down-clic">Gravity</button>
+        <%= raw boxes(@piece) %>
+        <%= raw boxes(Map.values(@bottom)) %>
 
-        <h2 class="score">Your score is: <%= @score %></h2>
+        <%= raw svg_foot()%>
+      </div>
 
+      <a class="score">Your score is: <%= @score %></a>
+
+      <div class="mt-7">
+        <a href="/tetris/giant" class="action-button giant">Giant</a>
         <button class="action-button give_up" phx-click="give_up">Give Up</button>
-
-        <div class="mt-7">
-          <a href="/tetris/giant" class="action-button giant">Giant</a>
-        </div>
+      </div>
       </main>
     """
   end
@@ -92,10 +93,10 @@ defmodule UiWeb.TetrisLive do
       <main class="moitie-ecran-tetris">
         <h1 class="title">The Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
 
-        <div class="tetris" phx-window-keydown="keydown">
-        <%= raw svg_head()%>
-        <%= raw svg_foot()%>
-      </div>
+        <div class="p-2 bg-gradient-to-b from-red-300 to-yellow-200 rounded-lg" phx-window-keydown="keydown">
+          <%= raw svg_head()%>
+          <%= raw svg_foot()%>
+        </div>
 
         <h1 class="game_over"> Game Over </h1>
         <h2 class="score">Your score: <%= @score %></h2>

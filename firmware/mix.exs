@@ -57,12 +57,15 @@ defmodule Firmware.MixProject do
       # Dependencies for all targets except :host
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
 
+      # Wifi
+      {:vintage_net_wifi, "~> 0.11.6", targets: @all_targets},
+
       # My Ui
       {:ui, path: "../ui"},
 
       # My add
-      {:circuits_gpio, "~> 1.0"},
-      {:pigpiox, "~> 0.1"},
+      {:circuits_gpio, "~> 1.1.0"},
+      {:pigpiox, "~> 0.1.2"},
 
       # Dependencies for specific targets
       # NOTE: It's generally low risk and recommended to follow minor version

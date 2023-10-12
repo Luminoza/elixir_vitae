@@ -10,7 +10,9 @@ defmodule Ui.Manager do
         brightness: 0,
 
         button_pressed: false,
-        led_state: false,
+
+        button_front_pressed: false,
+        button_rear_pressed: false,
 
         button_right_pressed: false,
         button_left_pressed: false,
@@ -116,6 +118,18 @@ defmodule Ui.Manager do
     {:reply, {state.x, state.y, state.angle, state.speed}, state}
   end
 
+  ##------------- Finite Automata --------------##
+
+  @impl true
+  def handle_call({:set_button_front_pressed, new_button_front_pressed}, _from, state) do
+    {:reply, :ok, %{state | button_front_pressed: new_button_front_pressed}}
+  end
+
+  @impl true
+  def handle_call({:set_button_rear_pressed, new_button_rear_pressed}, _from, state) do
+    {:reply, :ok, %{state | button_rear_pressed: new_button_rear_pressed}}
+  end
+
 
   ##------------- The Mystery Website --------------##
 
@@ -196,6 +210,7 @@ defmodule Ui.Manager do
     GenServer.call(:ui_manager, :get_button_turn_pressed)
   end
 
+
   ##------------- The Joystick Website --------------##
 
   def set_joystick(x, y, angle, speed) do
@@ -204,6 +219,17 @@ defmodule Ui.Manager do
 
   def get_joystick() do
     GenServer.call(:ui_manager, :get_joystick)
+  end
+
+
+  ##------------- The (Reverse) LED Website --------------##
+
+  def set_button_front_pressed(button_front_pressed) do
+    GenServer.call(:ui_manager, {:set_button_front_pressed, button_front_pressed})
+  end
+
+  def set_button_rear_pressed(button_rear_pressed) do
+    GenServer.call(:ui_manager, {:set_button_rear_pressed, button_rear_pressed})
   end
 
 

@@ -27,21 +27,22 @@ defmodule UiWeb.TetrisGiantLive do
     ~L"""
     <head>
         <title>The (Giant) Tetris Website · Antonin TERRASSON</title>
-      </head>
+    </head>
 
-      <main class="moitie-ecran-tetris-giant">
-        <h1 class="title">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
+    <main class="moitie-ecran-tetris-giant">
+      <h1 class="title ">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=W1dRBWyf6z8&t=0m16s">®</a></h1>
 
-        <div class="tetris-giant" phx-window-keydown="keydown">
-          <%= raw svg_head()%>
-          <%= raw svg_foot()%>
-        </div>
+      <div phx-window-keydown="keydown">
+        <%= raw svg_head()%>
+        <%= raw svg_foot()%>
+      </div>
 
-        <button class="action-button play-giant" phx-click="start">Play</button>
+      <button class="action-button play-giant" phx-click="start">Play</button>
 
-        <div class="mt-7">
-          <a href="/tetris" class="action-button mini-giant">Mini</a>
-        </div>
+      <div class="mt-7">
+        <a href="/tetris" class="action-button mini-giant">Mini</a>
+      </div>
+    </main>
     """
   end
 
@@ -54,9 +55,9 @@ defmodule UiWeb.TetrisGiantLive do
       </head>
 
       <main class="moitie-ecran-tetris-giant">
-        <h1 class="title">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
+        <h1 class="title ">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=W1dRBWyf6z8&t=0m16s">®</a></h1>
 
-        <div class="tetris-giant" phx-window-keydown="keydown">
+        <div phx-window-keydown="keydown">
           <%= raw svg_head()%>
 
           <%= raw boxes(@piece) %>
@@ -90,9 +91,9 @@ defmodule UiWeb.TetrisGiantLive do
       </head>
 
       <main class="moitie-ecran-tetris-giant">
-        <h1 class="title">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=kIDWgqDBNXA&t=0m47s">®</a></h1>
+        <h1 class="title ">The (Giant) Tetris Website<a href="https://www.youtube.com/watch?v=W1dRBWyf6z8&t=0m16s">®</a></h1>
 
-        <div class="tetris-giant" phx-window-keydown="keydown">
+        <div phx-window-keydown="keydown">
         <%= raw svg_head()%>
         <%= raw svg_foot()%>
       </div>
