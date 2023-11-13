@@ -55,8 +55,8 @@ config :vintage_net,
           networks: [
             %{
               key_mgmt: :wpa_psk,
-              ssid: "RAK7268_2067",
-              psk: :none,
+              ssid: "Name of the Wifi",
+              psk: "password (:noneif there is no password)",
             }
           ]
         }

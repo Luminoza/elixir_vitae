@@ -1,8 +1,13 @@
+  # This module defines a GenServer (`Ui.Manager`) that handles various calls related to different components
+  # of a user interface. The GenServer manages the state, including brightness levels, button states, joystick
+  # values, and mystery settings.
+
 defmodule Ui.Manager do
   use GenServer
 
   ##------------- Start --------------##
 
+  # Start the GenServer with initial state.
   def start_link(_) do
     GenServer.start_link(
       __MODULE__,

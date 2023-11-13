@@ -1,17 +1,21 @@
+<!-- This HTML template includes a header with a navigation bar, a main content section where dynamic content is expected (using < % = @inner_content % >), and a footer with project information and a home link. -->
+
 <body>
 
+  <!-- Header Section -->
   <header>
+    <!-- Navigation bar -->
     <div class="px-8 flex justify-between text-sm border-b border-zinc-100 py-3">
-      
-      <div>
 
+      <!-- Logo or site name -->
+      <div>
         <a href="https://www.um.edu.mt" class="font-semibold text-zinc-900 hover:text-zinc-700">
           L-Università ta'Malta
         </a>
-
       </div>
-      <div class="flex gap-4 font-semibold text-zinc-900 hover:text-zinc-700">
 
+      <!-- Links on the right side of the navigation bar -->
+      <div class="flex gap-4 font-semibold text-zinc-900 hover:text-zinc-700">
         <a href="https://fr.linkedin.com/in/antonin-terrasson-587b181b7">
           Antonin TERRASSON
         </a>
@@ -19,21 +23,25 @@
         <a href="https://eseo.fr">
           ESEO Angers
         </a>
-
       </div>
-      
+
     </div>
   </header>
 
+  <!-- Main Content Section -->
   <main>
-      <%= @inner_content %>
+    <!-- Inner content, typically generated dynamically -->
+    <%= @inner_content %>
   </main>
 
+  <!-- Footer Section -->
   <footer>
+    <!-- Project information or attribution -->
     <a>
       Projet - L-Università ta'Malta - Antonin TERRASSON
-    </a> 
+    </a>
 
+    <!-- Home link in the footer -->
     <a href="/" class="home">
       Home
     </a>

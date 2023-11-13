@@ -60,10 +60,10 @@ defmodule Firmware.MixProject do
       # Wifi
       {:vintage_net_wifi, "~> 0.11.6", targets: @all_targets},
 
-      # My Ui
+      # My Ui, the web site Phoenix Framework
       {:ui, path: "../ui"},
 
-      # My add
+      # My adds
       {:circuits_gpio, "~> 1.1.0"},
       {:pigpiox, "~> 0.1.2"},
 

@@ -19,17 +19,19 @@ defmodule Firmware.Application do
         # Ui.Manager,
         Ui.Manager.start_link(0),
 
+        #Start All Projects ->
+
         # Start Led
         Firmware.Led.start(:normal, []),
 
         # Start Reverse Led
         Firmware.ReverseLed.start(:normal, []),
 
-        # Start Tetris
-        Firmware.Tetris.start(:normal, []),
-
         # Start FiniteAutomata
         Firmware.FiniteAutomata.start(:normal, []),
+
+        # Start Tetris
+        Firmware.Tetris.start(:normal, []),
 
         # Start Rainbow LED
         Firmware.RainbowLED.start(:normal, [])

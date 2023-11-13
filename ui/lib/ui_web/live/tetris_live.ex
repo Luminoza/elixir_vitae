@@ -74,7 +74,7 @@ defmodule UiWeb.TetrisLive do
 
       <a class="score">Your score is: <%= @score %></a>
 
-      <div class="mt-7">
+      <div class="mt-2">
         <a href="/tetris/giant" class="action-button giant">Giant</a>
         <button class="action-button give_up" phx-click="give_up">Give Up</button>
       </div>
@@ -103,7 +103,7 @@ defmodule UiWeb.TetrisLive do
 
         <button class="action-button play_again" phx-click="start">Play again ?</button>
 
-        <div class="mt-7">
+        <div class="mt-2">
           <a href="/tetris/giant" class="action-button giant">Giant</a>
         </div>
       </main>

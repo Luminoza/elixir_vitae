@@ -1,13 +1,18 @@
+# This Elixir script defines a module, Ui.Tetris, that provides functions for preparing, moving, and scoring Tetris blocks.
+# It includes operations for preparing a block, dropping it down, handling collisions, trying to move left, right, or rotate,
+# and calculating the score based on completed rows.
+
 defmodule Ui.Tetris do
 
   alias Ui.Tetris.Block
   alias Ui.Tetris.Points
   alias Ui.Tetris.Bottom
 
-  ##------------- Prearation du block --------------##
+  ##------------- Preparation du block --------------##
 
-  ## Pour s'assurer que le block est créer à un endoit sans collision
+  ## To ensure that the block is created at a location without collision
 
+  # Prepare a block for placement, ensuring no collision.
   def prepare(block) do
     block
     |> Block.prepare
@@ -16,8 +21,9 @@ defmodule Ui.Tetris do
 
   ##------------- Move down a block --------------##
 
-  ## si il y a une collision faire la gestion
+  ## If there is a collision, handle it
 
+  # Drop a block down and handle collisions.
   def drop(block, bottom, color) do
     new_block =
       Block.down(block)
@@ -31,8 +37,9 @@ defmodule Ui.Tetris do
     )
   end
 
-  ##-- Si collision --##
+  ##-- If collision --##
 
+  # Handle collision by merging points, collapsing rows, and updating the game state.
   def if_drop(true, bottom, old_block, _new_block, color) do
 
     new_block = Block.new_random()
@@ -42,10 +49,10 @@ defmodule Ui.Tetris do
       |> prepare()
       |> Points.color(color)
 
-      {count, new_bottom} =
-        bottom
-        |> Bottom.merge(points)
-        |> Bottom.full_collapse
+    {count, new_bottom} =
+      bottom
+      |> Bottom.merge(points)
+      |> Bottom.full_collapse
 
     %{
       block: new_block,
@@ -55,8 +62,9 @@ defmodule Ui.Tetris do
     }
   end
 
-  ##-- Si pas collision --##
+  ##-- If no collision --##
 
+  # If there is no collision, update the game state.
   def if_drop(false, bottom, _old_block, new_block, _color) do
     %{
       block: new_block,
@@ -68,6 +76,7 @@ defmodule Ui.Tetris do
 
   ##------------- Try to move --------------##
 
+  # Try to move a block left, right, or rotate and handle collisions.
   def try_left(block, bottom), do: try_move(block, bottom, &Block.left/1)
   def try_right(block, bottom), do: try_move(block, bottom, &Block.right/1)
   def try_rotate(block, bottom), do: try_move(block, bottom, &Block.rotate/1)
@@ -82,8 +91,9 @@ defmodule Ui.Tetris do
     end
   end
 
-  ##------------- Calcul du score --------------##
+  ##------------- Calculate score --------------##
 
+  # Calculate the score based on the number of completed rows.
   def score(0), do: 0
   def score(count) do
     100 * round(:math.pow(2, count))

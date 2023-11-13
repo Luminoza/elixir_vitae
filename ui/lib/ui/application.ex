@@ -10,8 +10,10 @@ defmodule Ui.Application do
     children = [
       # Start the Telemetry supervisor
       UiWeb.Telemetry,
+
       # Start the PubSub system
       {Phoenix.PubSub, name: Ui.PubSub},
+
       # Start the Endpoint (http/https)
       UiWeb.Endpoint,
     ]

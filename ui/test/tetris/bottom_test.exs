@@ -3,6 +3,7 @@ defmodule Ui.Tetris.BottomTest do
 
   import Ui.Tetris.Bottom
 
+  # Test for collision detection
   test "Collision" do
     bottom = %{{1, 1} => {1, 1, :blue}}
 
@@ -17,6 +18,7 @@ defmodule Ui.Tetris.BottomTest do
     refute collides?(bottom, [{1,2, :orange}, {1,3, :red}])
   end
 
+  # Test for merging blocks
   test "Merges" do
     bottom = %{{1, 1} => {1, 1, :blue}}
 
@@ -30,12 +32,14 @@ defmodule Ui.Tetris.BottomTest do
     assert actual == expected
   end
 
+  # Test for identifying a complete row
   test "complete row" do
     bottom = new_bottom(20, [{{19, 19}, {19, 19, :red}}])
 
     assert complete_row(bottom) == [20]
   end
 
+  # Test for collapsing a single row
   test "collapse single row" do
     bottom = new_bottom(20, [{{19, 19}, {19, 19, :red}}])
     actual = Map.keys(collapse_row(bottom, 20))
@@ -44,6 +48,7 @@ defmodule Ui.Tetris.BottomTest do
     assert Enum.count(actual) == 1
   end
 
+  # Test for full collapse with a single row
   test "full collapse with single row" do
     bottom = new_bottom(20, [{{19, 19}, {19, 19, :red}}])
     {actual_count, actual_bottom} = full_collapse(bottom)
@@ -52,6 +57,7 @@ defmodule Ui.Tetris.BottomTest do
     assert {19, 20} in Map.keys(actual_bottom)
   end
 
+  # Helper function to create a new bottom with a complete row and additional blocks
   def new_bottom(complete_row, xtras) do
     (xtras ++
     (1..10

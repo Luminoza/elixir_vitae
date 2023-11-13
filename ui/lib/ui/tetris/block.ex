@@ -1,9 +1,15 @@
+# This Elixir script defines a module, Ui.Tetris.Block, that represents Tetris blocks.
+# The module includes functions for creating new blocks, defining block movements, rotations, shapes, colors,
+# and rendering blocks for display. It also provides functions for printing, converting to a string,
+# and inspecting the block's attributes.
+
 defmodule Ui.Tetris.Block do
 
   alias Ui.Tetris.Points
 
   ##------------- Default --------------##
 
+  # Define the default attributes for a Tetris block.
   defstruct [
     name: :i,
     location: {40, 0},
@@ -13,10 +19,12 @@ defmodule Ui.Tetris.Block do
 
   ##------------- Create New --------------##
 
+  # Create a new block with the given attributes.
   def new(attributes \\ []) do
     __struct__(attributes)
   end
 
+  # Create a new block with random attributes.
   def new_random() do
     %__MODULE__{
       name: random_name(),
@@ -28,6 +36,7 @@ defmodule Ui.Tetris.Block do
 
   #-- Name --#
 
+  # Generate a random block name.
   def random_name() do
     ~w(o i s z l j t)a
     |> Enum.random
@@ -36,11 +45,13 @@ defmodule Ui.Tetris.Block do
 
   #-- Rotation --#
 
+  # Generate a random rotation for a block.
   def random_rotation() do
     [0, 90, 180, 270]
     |> Enum.random
   end
 
+  # Generate a random reflection for a block.
   def random_reflection() do
     [true, false]
     |> Enum.random
@@ -50,45 +61,55 @@ defmodule Ui.Tetris.Block do
 
   #-- Down --#
 
+  # Move the block down by one unit.
   def down(block) do
     %{block | location: point_down(block.location)}
   end
 
+  # Calculate the new point when moving down.
   def point_down({x, y}) do
     {x, y + 1}
   end
 
   #-- Right --#
 
+  # Move the block to the right by one unit.
   def right(block) do
     %{block | location: point_right(block.location)}
   end
 
+  # Calculate the new point when moving to the right.
   def point_right({x, y}) do
     {x + 1, y}
   end
 
   #-- Left --#
 
+  # Move the block to the left by one unit.
   def left(block) do
     %{block | location: point_left(block.location)}
   end
 
+  # Calculate the new point when moving to the left.
   def point_left({x, y}) do
     {x - 1, y}
   end
 
   #------------- Rotation --------------#
 
+  # Rotate the block by 90 degrees.
   def rotate(block) do
     %{block | rotation: rotate_90(block.rotation)}
   end
 
+  # Calculate the new rotation angle when rotating by 90 degrees.
   def rotate_90(degrees) do
     degrees + 90
   end
 
   #------------- Shape --------------#
+
+  # Define the shape of the block based on its name.
 
   def shape(%{name: :o}) do
     [
@@ -148,6 +169,8 @@ defmodule Ui.Tetris.Block do
 
   #-- Color --#
 
+  # Determine the color of the block based on its name.
+
   defp color(%{name: :o}), do: :yellow
   defp color(%{name: :i}), do: :blue
   defp color(%{name: :s}), do: :red
@@ -158,6 +181,7 @@ defmodule Ui.Tetris.Block do
 
   #-- String & Print --#
 
+  # Prepare the block for display by transforming its shape.
   def prepare(block) do
     block
     |> shape()
@@ -167,12 +191,14 @@ defmodule Ui.Tetris.Block do
 
   ##------------- To show in console --------------##
 
+  # Convert the block to a string for display.
   def to_string(block) do
     block
     |> prepare()
     |> Points.to_string()
   end
 
+  # Print the block and return it.
   def print(block) do
     block
     |> prepare()
@@ -180,6 +206,7 @@ defmodule Ui.Tetris.Block do
     block
   end
 
+  # Render the block for display, applying color and position.
   def render(block) do
     block
     |> prepare
@@ -189,6 +216,7 @@ defmodule Ui.Tetris.Block do
 
   #-- Inspect --#
 
+  # Implement the Inspect protocol for the Block struct for easy inspection.
   defimpl Inspect, for: Ui.Tetris.Block do
     import Inspect.Algebra
 
